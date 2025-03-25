@@ -1,0 +1,301 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhijeet's Portfolio</title>
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'portfolio/css/mediaqueries.css' %}" />
+  </head>
+  
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">𝕬𝖇𝖍𝖎𝖏𝖊𝖊𝖙 𝕽𝖆𝖓𝖆✍</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#certificates">Certifications</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="{% static 'portfolio/assets/profile-pic.png' %}" alt="Abhijeet Rana profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Abhijeet Rana</h1>
+        <p class="section__text__p2">FullStack Web Developer</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('{% static "portfolio/assets/resume-example.pdf" %}')"
+          >
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="{% static 'portfolio/assets/linkedin.png' %}"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='{{ linkedin_url }}'"
+          />
+          <img
+            src="{% static 'portfolio/assets/github.png' %}"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='{{ github_url }}'"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="{% static 'portfolio/assets/experience.png' %}"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>{{ experience }}</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="{% static 'portfolio/assets/education.png' %}"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>{{ education|linebreaksbr }}</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>{{ about_me|linebreaksbr }}</p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="{% static 'portfolio/assets/arrow.png' %}"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='#experience'"
+      />
+    </section>
+
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Skills</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h3 class="experience-sub-title">Web Development</h3>
+            <div class="article-container">
+              {% for skill in web_skills %}
+              <article>
+                <img
+                  src="{% static 'portfolio/assets/checkmark.png' %}"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>{{ skill.name }}</h3>
+                </div>
+              </article>
+              {% endfor %}
+            </div>			
+          </div>  		  
+		  <div class="details-container">
+            <h3 class="experience-sub-title">Programming Languages</h3>
+            <div class="article-container">
+              {% for skill in pro_skills %}
+              <article>
+                <img
+                  src="{% static 'portfolio/assets/checkmark.png' %}"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>{{ skill.name }}</h3>
+                </div>
+              </article>
+              {% endfor %}
+            </div>			
+          </div> 
+          <div class="details-container">
+            <h3 class="experience-sub-title">Python Libraries</h3>
+            <div class="article-container">
+              {% for skill in libraries %}
+              <article>
+                <img
+                  src="{% static 'portfolio/assets/checkmark.png' %}"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>{{ skill.name }}</h3>
+                </div>
+              </article>
+              {% endfor %}
+            </div>			
+          </div>  
+		  		  
+		  <div class="details-container">
+            <h3 class="experience-sub-title">Frameworks</h3>
+            <div class="article-container">
+              {% for skill in frame_skills %}
+              <article>
+                <img
+                  src="{% static 'portfolio/assets/checkmark.png' %}"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>{{ skill.name }}</h3>
+                </div>
+              </article>
+              {% endfor %}
+            </div>			
+          </div>  		  
+        </div>
+      </div>
+      <img
+        src="{% static 'portfolio/assets/arrow.png' %}"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='#certificates'"
+      />
+    </section>
+	
+	<section id="certificates">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Certifications</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          {% for certificate in certificates %}
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="{% static certificate.image %}"
+                alt="{{ certificate.name }}"
+                class="project-img"
+              />
+            </div>
+            <h3 class="experience-sub-title project-title">{{ certificate.name }}</h3>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='{{ certificate.live_url }}'"
+              >
+                Live View
+              </button>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <img
+        src="{% static 'portfolio/assets/arrow.png' %}"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='#projects'"
+      />
+    </section>
+		
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          {% for project in projects %}
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="{% static project.image %}"
+                alt="{{ project.name }}"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">{{ project.name }}</h2>
+			<p>{{project.description|linebreaksbr}}</p>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='{{ project.github_url }}'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='{{ project.live_demo_url }}'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <img
+        src="{% static 'portfolio/assets/arrow.png' %}"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='#contact'"
+      />
+    </section>
+
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="{% static 'portfolio/assets/email.png' %}"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:{{ email }}">{{ email }}</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="{% static 'portfolio/assets/linkedin.png' %}"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="{{ linkedin_url }}">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#certificates">Certifications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2025 Abhijeet Rana. All Rights Reserved.</p>
+    </footer>
+
+    <script src="{% static 'portfolio/js/script.js' %}"></script>
+  </body>
+</html>
