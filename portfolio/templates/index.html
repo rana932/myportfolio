@@ -2,300 +2,309 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abhijeet's Portfolio</title>
-    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'portfolio/css/mediaqueries.css' %}" />
-  </head>
-  
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">𝕬𝖇𝖍𝖎𝖏𝖊𝖊𝖙 𝕽𝖆𝖓𝖆✍</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#certificates">Certifications</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhijeet's Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E40AF',
+            secondary: '#6B7280',
+            dark: '#111827',
+            light: '#F9FAFB',
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-r from-indigo-50 to-blue-50 font-poppins">
+  <!-- Background animation -->
+  <div class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-primary">𝕬𝖇𝖍𝖎𝖏𝖊𝖊𝖙 𝕽𝖆𝖓𝖆✍</a>
+        
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex space-x-8">
+          <li><a href="#about" class="text-gray-700 hover:text-primary transition-colors duration-300">About</a></li>
+          <li><a href="#certificates" class="text-gray-700 hover:text-primary transition-colors duration-300">Certifications</a></li>
+          <li><a href="#projects" class="text-gray-700 hover:text-primary transition-colors duration-300">Projects</a></li>
+          <li><a href="#contact" class="text-gray-700 hover:text-primary transition-colors duration-300">Contact</a></li>
+        </ul>
+        
+        <!-- Mobile Navigation Button -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <ul class="flex flex-col p-4 space-y-4">
+          <li><a href="#about" class="block text-gray-700 hover:text-primary transition-colors duration-300">About</a></li>
+          <li><a href="#certificates" class="block text-gray-700 hover:text-primary transition-colors duration-300">Certifications</a></li>
+          <li><a href="#projects" class="block text-gray-700 hover:text-primary transition-colors duration-300">Projects</a></li>
+          <li><a href="#contact" class="block text-gray-700 hover:text-primary transition-colors duration-300">Contact</a></li>
         </ul>
       </div>
     </nav>
 
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="{% static 'portfolio/assets/profile-pic.png' %}" alt="Abhijeet Rana profile picture" />
+    <!-- Hero Section -->
+    <section id="profile" class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center justify-center">
+      <div class="md:w-1/2 mb-8 md:mb-0 flex justify-center">
+        <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shadow-xl border-4 border-white">
+          <img src="{% static 'portfolio/assets/profile-pic.png' %}" alt="Abhijeet Rana profile picture" class="w-full h-full object-cover" />
+        </div>
       </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Abhijeet Rana</h1>
-        <p class="section__text__p2">FullStack Web Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('{% static "portfolio/assets/resume-example.pdf" %}')"
-          >
+      <div class="md:w-1/2 text-center md:text-left md:pl-8">
+        <p class="text-lg text-gray-600 mb-2">Hello, I'm</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">Abhijeet Rana</h1>
+        <p class="text-xl text-primary mb-6">FullStack Web Developer</p>
+        <div class="flex flex-wrap justify-center md:justify-start space-x-4 mb-6">
+          <button onclick="window.open('{% static "portfolio/assets/resume-example.pdf" %}')" class="px-6 py-3 bg-white text-primary font-medium rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-primary">
             Download CV
           </button>
-          <button class="btn btn-color-1" onclick="location.href='#contact'">
+          <button onclick="location.href='#contact'" class="px-6 py-3 bg-primary text-white font-medium rounded-full shadow-md hover:shadow-lg hover:bg-blue-700 transition-all duration-300">
             Contact Info
           </button>
         </div>
-        <div id="socials-container">
-          <img
-            src="{% static 'portfolio/assets/linkedin.png' %}"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='{{ linkedin_url }}'"
-          />
-          <img
-            src="{% static 'portfolio/assets/github.png' %}"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='{{ github_url }}'"
-          />
+        <div class="flex justify-center md:justify-start space-x-4">
+          <a href="{{ linkedin_url }}" class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-300">
+            <img src="{% static 'portfolio/assets/linkedin.png' %}" alt="My LinkedIn profile" class="w-5 h-5" />
+          </a>
+          <a href="{{ github_url }}" class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-300">
+            <img src="{% static 'portfolio/assets/github.png' %}" alt="My Github profile" class="w-5 h-5" />
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="{% static 'portfolio/assets/experience.png' %}"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>{{ experience }}</p>
+    <!-- About Section -->
+    <section id="about" class="bg-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <p class="text-center text-primary font-medium mb-2">Get To Know More</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">About Me</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-gray-50 rounded-2xl shadow-md p-6 flex flex-col items-center">
+            <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+              <img src="{% static 'portfolio/assets/experience.png' %}" alt="Experience icon" class="w-6 h-6" />
             </div>
-            <div class="details-container">
-              <img
-                src="{% static 'portfolio/assets/education.png' %}"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>{{ education|linebreaksbr }}</p>
-            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Experience</h3>
+            <p class="text-gray-600 text-center">{{ experience }}</p>
           </div>
-          <div class="text-container">
-            <p>{{ about_me|linebreaksbr }}</p>
+          
+          <div class="bg-gray-50 rounded-2xl shadow-md p-6 flex flex-col items-center">
+            <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+              <img src="{% static 'portfolio/assets/education.png' %}" alt="Education icon" class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Education</h3>
+            <p class="text-gray-600 text-center">{{ education|linebreaksbr }}</p>
           </div>
         </div>
+        
+        <div class="bg-gray-50 rounded-2xl shadow-md p-8 max-w-3xl mx-auto">
+          <p class="text-gray-600 text-justify md:text-center leading-relaxed">{{ about_me|linebreaksbr }}</p>
+        </div>
       </div>
-      <img
-        src="{% static 'portfolio/assets/arrow.png' %}"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#experience'"
-      />
     </section>
 
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Skills</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h3 class="experience-sub-title">Web Development</h3>
-            <div class="article-container">
+    <!-- Skills Section -->
+    <section id="experience" class="py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <p class="text-center text-primary font-medium mb-2">Explore My</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Skills</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <!-- Web Development -->
+          <div class="bg-white rounded-2xl shadow-md p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-6 text-center">Web Development</h3>
+            <div class="grid grid-cols-2 gap-4">
               {% for skill in web_skills %}
-              <article>
-                <img
-                  src="{% static 'portfolio/assets/checkmark.png' %}"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>{{ skill.name }}</h3>
+              <div class="flex items-center">
+                <div class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-full mr-3">
+                  <img src="{% static 'portfolio/assets/checkmark.png' %}" alt="Checkmark" class="w-4 h-4" />
                 </div>
-              </article>
+                <span class="text-gray-700">{{ skill.name }}</span>
+              </div>
               {% endfor %}
-            </div>			
-          </div>  		  
-		  <div class="details-container">
-            <h3 class="experience-sub-title">Programming Languages</h3>
-            <div class="article-container">
+            </div>
+          </div>
+          
+          <!-- Programming Languages -->
+          <div class="bg-white rounded-2xl shadow-md p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-6 text-center">Programming Languages</h3>
+            <div class="grid grid-cols-2 gap-4">
               {% for skill in pro_skills %}
-              <article>
-                <img
-                  src="{% static 'portfolio/assets/checkmark.png' %}"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>{{ skill.name }}</h3>
+              <div class="flex items-center">
+                <div class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-full mr-3">
+                  <img src="{% static 'portfolio/assets/checkmark.png' %}" alt="Checkmark" class="w-4 h-4" />
                 </div>
-              </article>
+                <span class="text-gray-700">{{ skill.name }}</span>
+              </div>
               {% endfor %}
-            </div>			
-          </div> 
-          <div class="details-container">
-            <h3 class="experience-sub-title">Python Libraries</h3>
-            <div class="article-container">
+            </div>
+          </div>
+          
+          <!-- Python Libraries -->
+          <div class="bg-white rounded-2xl shadow-md p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-6 text-center">Python Libraries</h3>
+            <div class="grid grid-cols-2 gap-4">
               {% for skill in libraries %}
-              <article>
-                <img
-                  src="{% static 'portfolio/assets/checkmark.png' %}"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>{{ skill.name }}</h3>
+              <div class="flex items-center">
+                <div class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-full mr-3">
+                  <img src="{% static 'portfolio/assets/checkmark.png' %}" alt="Checkmark" class="w-4 h-4" />
                 </div>
-              </article>
+                <span class="text-gray-700">{{ skill.name }}</span>
+              </div>
               {% endfor %}
-            </div>			
-          </div>  
-		  		  
-		  <div class="details-container">
-            <h3 class="experience-sub-title">Frameworks</h3>
-            <div class="article-container">
+            </div>
+          </div>
+          
+          <!-- Frameworks -->
+          <div class="bg-white rounded-2xl shadow-md p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-6 text-center">Frameworks</h3>
+            <div class="grid grid-cols-2 gap-4">
               {% for skill in frame_skills %}
-              <article>
-                <img
-                  src="{% static 'portfolio/assets/checkmark.png' %}"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>{{ skill.name }}</h3>
+              <div class="flex items-center">
+                <div class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-full mr-3">
+                  <img src="{% static 'portfolio/assets/checkmark.png' %}" alt="Checkmark" class="w-4 h-4" />
                 </div>
-              </article>
+                <span class="text-gray-700">{{ skill.name }}</span>
+              </div>
               {% endfor %}
-            </div>			
-          </div>  		  
+            </div>
+          </div>
         </div>
       </div>
-      <img
-        src="{% static 'portfolio/assets/arrow.png' %}"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#certificates'"
-      />
     </section>
-	
-	<section id="certificates">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Certifications</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
+
+    <!-- Certifications Section -->
+    <section id="certificates" class="bg-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <p class="text-center text-primary font-medium mb-2">Browse My Recent</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Certifications</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {% for certificate in certificates %}
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="{% static certificate.image %}"
-                alt="{{ certificate.name }}"
-                class="project-img"
-              />
+          <div class="bg-gray-50 rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+            <div class="h-48 overflow-hidden">
+              <img src="{% static certificate.image %}" alt="{{ certificate.name }}" class="w-full h-full object-cover" />
             </div>
-            <h3 class="experience-sub-title project-title">{{ certificate.name }}</h3>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='{{ certificate.live_url }}'"
-              >
-                Live View
-              </button>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">{{ certificate.name }}</h3>
+              <div class="flex justify-center">
+                <a href="{{ certificate.live_url }}" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-blue-700 transition-colors duration-300">View Certificate</a>
+              </div>
             </div>
           </div>
           {% endfor %}
         </div>
       </div>
-      <img
-        src="{% static 'portfolio/assets/arrow.png' %}"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#projects'"
-      />
     </section>
-		
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <p class="text-center text-primary font-medium mb-2">Browse My Recent</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Projects</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {% for project in projects %}
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="{% static project.image %}"
-                alt="{{ project.name }}"
-                class="project-img"
-              />
+          <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+            <div class="h-48 overflow-hidden">
+              <img src="{% static project.image %}" alt="{{ project.name }}" class="w-full h-full object-cover" />
             </div>
-            <h2 class="experience-sub-title project-title">{{ project.name }}</h2>
-			<p>{{project.description|linebreaksbr}}</p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='{{ project.github_url }}'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='{{ project.live_demo_url }}'"
-              >
-                Live Demo
-              </button>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ project.name }}</h3>
+              <p class="text-gray-600 text-sm mb-4 line-clamp-3">{{ project.description|linebreaksbr }}</p>
+              <div class="flex justify-between">
+                <a href="{{ project.github_url }}" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors duration-300">GitHub</a>
+                <a href="{{ project.live_demo_url }}" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-blue-700 transition-colors duration-300">Live Demo</a>
+              </div>
             </div>
           </div>
           {% endfor %}
         </div>
       </div>
-      <img
-        src="{% static 'portfolio/assets/arrow.png' %}"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#contact'"
-      />
     </section>
 
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="{% static 'portfolio/assets/email.png' %}"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:{{ email }}">{{ email }}</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="{% static 'portfolio/assets/linkedin.png' %}"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="{{ linkedin_url }}">LinkedIn</a></p>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <p class="text-center text-primary font-medium mb-2">Get in Touch</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Contact Me</h2>
+        
+        <div class="max-w-2xl mx-auto bg-gray-50 rounded-2xl shadow-md p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a href="mailto:{{ email }}" class="flex flex-col items-center bg-white rounded-xl p-6 shadow-sm transition-transform duration-300 hover:transform hover:scale-105">
+              <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                <img src="{% static 'portfolio/assets/email.png' %}" alt="Email icon" class="w-6 h-6" />
+              </div>
+              <span class="text-gray-800 font-medium">Email</span>
+              <span class="text-primary">{{ email }}</span>
+            </a>
+            
+            <a href="{{ linkedin_url }}" class="flex flex-col items-center bg-white rounded-xl p-6 shadow-sm transition-transform duration-300 hover:transform hover:scale-105">
+              <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                <img src="{% static 'portfolio/assets/linkedin.png' %}" alt="LinkedIn icon" class="w-6 h-6" />
+              </div>
+              <span class="text-gray-800 font-medium">LinkedIn</span>
+              <span class="text-primary">Connect with me</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#certificates">Certifications</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+          <div class="text-2xl font-bold mb-4 md:mb-0">𝕬𝖇𝖍𝖎𝖏𝖊𝖊𝖙 𝕽𝖆𝖓𝖆✍</div>
+          <ul class="flex flex-wrap justify-center space-x-6">
+            <li><a href="#about" class="hover:text-blue-300 transition-colors duration-300">About</a></li>
+            <li><a href="#certificates" class="hover:text-blue-300 transition-colors duration-300">Certifications</a></li>
+            <li><a href="#projects" class="hover:text-blue-300 transition-colors duration-300">Projects</a></li>
+            <li><a href="#contact" class="hover:text-blue-300 transition-colors duration-300">Contact</a></li>
           </ul>
         </div>
-      </nav>
-      <p>Copyright &#169; 2025 Abhijeet Rana. All Rights Reserved.</p>
+        <div class="border-t border-gray-700 pt-8">
+          <p class="text-center text-gray-400">Copyright &#169; 2025 Abhijeet Rana. All Rights Reserved.</p>
+        </div>
+      </div>
     </footer>
+  </div>
 
-    <script src="{% static 'portfolio/js/script.js' %}"></script>
-  </body>
+  <!-- JavaScript for Mobile Menu Toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+</body>
 </html>
